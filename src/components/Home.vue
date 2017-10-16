@@ -49,12 +49,12 @@
             justify-center
             align-center
           >
-            <v-tooltip right>
+            <!-- <v-tooltip right>
               <v-btn icon large :href="source" target="_blank" slot="activator">
                 <v-icon large>code</v-icon>
               </v-btn>
               <span>Source</span>
-            </v-tooltip>
+            </v-tooltip> -->
           </v-layout>
         </v-container>
       </v-content>
@@ -76,29 +76,6 @@
     data: () => ({
       drawer: true
     }),
-    data () {
-      return {
-        menuItems: [
-          {
-            icon: 'assignment_turned_in',
-            title: 'Projects',
-            menuItems: [
-              {title: 'Tumbleweed Express'},
-              {title: 'Trials By Torchlight'},
-              {title: 'GNOP'},
-              {title: 'Climby'},
-              {title: 'Snake Escape'},
-              {title: 'Moonshadow'},
-              {title: 'Alkir\'s Crypt'},
-              {title: 'RoboHeart'},
-              {title: 'Paintsketball!'},
-              {title: 'Monkey Business'},
-              {title: 'Gilbert\'s Great Escape'}
-            ]
-          }
-        ]
-      }
-    },
     props: {
       source: String
     }
