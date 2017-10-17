@@ -1,23 +1,35 @@
 <template>
-	<article>	
-		<section class="hero is-light">
-			<div class="container">
-				<div class="columns">
-					<div class="column is-half"></div>
-				</div>
-			</div>
-		</section>
-	</article>	
+  <v-container fluid fill-height>
+     <v-layout
+       justify-center
+       align-center
+       >
+ 	</v-layout>
+  </v-container>      
 </template>
 
 <script>
-	export default {
-		name: 'portfolioitem'
-	}
+import projects from '../data/projects.json'
+
+export default {
+  data() {
+    return {
+      projectData: projects[this.$route.params.projectId]
+    }
+  },
+  filters: {
+    shrinkUrl(value) {
+      return value.replace(/^https?\:\/\//i, '')
+    }
+  },
+ /* methods: {
+    imgDetailSrc(value) {
+      return require(`images/projects/${value}`)
+    }
+  }*/
+}
 </script>
 
 <style>
-  .is-light {
-  	background-color: #333;
-  }
+
 </style>

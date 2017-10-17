@@ -1,21 +1,117 @@
 <template>
-  <div id="app">
-    <router-view 
-    	transition="fade" transition-mode="out-in">
-	</router-view>
-  </div>
+  <v-app id="app">
+    <v-navigation-drawer
+      persistent
+      v-model="drawer"
+      enable-resize-watcher
+      app
+    >
+    <v-toolbar flat>
+      <v-list>
+        <v-list-tile @click="" :to="{path: '/'}">
+          <v-list-tile-avatar>
+            <img src="./assets/gilbert.png" alt="Gilbert">
+          </v-list-tile-avatar>
+          <v-list-tile-title class="title">
+            Jacob Clayman
+          </v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-toolbar>
+    <v-divider></v-divider>
+      <v-list>
+        <v-list-group v-for="item in items" :value="item.active" v-bind:key="item.title">
+          <v-list-tile slot="item" :href="item.href" :to="{name: item.href}">
+            <v-list-tile-action>
+              <v-icon light>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-tile-content>
+            <!-- <v-list-tile-action v-show="item.items.length > 0">
+              <v-icon>keyboard_arrow_down</v-icon>
+            </v-list-tile-action>
+          </v-list-tile> -->
+          <!-- <v-list-tile v-for="subItem in item.items" v-bind:key="subItem.title" @click="" :href="subItem.href" :to="{name: subItem.href}">
+		        <v-list-tile-content>
+		          <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
+		        </v-list-tile-content> -->
+		      </v-list-tile>
+        </v-list-group>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar class="green" light fixed app>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-title>{{ $route.params.id }}</v-toolbar-title>
+    </v-toolbar>
+    <main>
+	    <v-fade-transition mode="out-in">
+	      <router-view></router-view>
+	    </v-fade-transition>
+    </main>
+    <v-footer class="green" app>
+      <span class="white--text">&copy; 2017</span>
+    </v-footer>
+  </v-app>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  components: {
+  import projects from './data/projects.json'
+  import portfolioitem from '@/components/PortfolioItem'
+  import axios from 'axios'
 
+  export default {
+  	name: 'app',
+    components: {
+      portfolioitem
+    },
+    data () {
+      return {
+        projects,
+        drawer: true,
+        items: [{
+        	href: 'home',
+        	router: true,
+        	title: 'Projects',
+        	icon: 'work',
+        	active: true,
+        	// items: [
+        	//  { title: 'Tumbleweed Express', href: 'projects' },
+        	//  { title: 'Trials By Torchlight' },
+        	//  { title: 'GNOP' },
+        	//  { title: 'Climby' },
+        	// ]
+        }, {
+        	href: 'resume',
+        	router: true,
+        	title: 'Resume',
+        	icon: 'assignment',
+        	items: [],
+        }, {
+        	href: 'contact',
+        	router: true,
+        	title: 'Contact',
+        	icon: 'contact_mail',
+        	items: [],
+        }],
+    };
+  },
+  methods: {
+    fetchProjects: function () {
+      axios.get('http://localhost:8080/#/data/projects.json').then((response) => {
+        this.projects = response.data
+      }, (error) => {
+        console.log(error)
+      })
+    }
+  },
+  mounted: function () {
+    this.fetchProjects()
   }
-
 }
+
 </script>
 
 <style>
-
+	
 </style>
