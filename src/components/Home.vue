@@ -2,7 +2,8 @@
     <v-container>
         <!-- <h3 class="my-3">Examples</h3> -->
         <v-card 
-        v-for="project of projects"
+        v-for="(project, value) of projects" 
+        :project_data="value"
         @click=""
         >
             <v-card-media
@@ -19,7 +20,7 @@
                 {{ project.description | truncate 180 }}
             </v-card-text>
             <v-card-actions class="blue-grey darken-1">
-                <v-btn :to="{ name: 'project_component', params: { projectId: project_id } }" flat class="white--text">This is a button</v-btn>
+                <v-btn :to="{ name: 'project_component', params: { projectId: project.id } }" flat class="white--text">This is a button</v-btn>
                 <v-spacer></v-spacer>
                 <v-icon class="white--text">explore</v-icon>
             </v-card-actions>

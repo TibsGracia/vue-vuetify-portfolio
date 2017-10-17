@@ -42,7 +42,7 @@
     </v-navigation-drawer>
     <v-toolbar class="green" light fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>{{ $route.params.id }}</v-toolbar-title>
+      <v-toolbar-title></v-toolbar-title>
     </v-toolbar>
     <main>
 	    <v-fade-transition mode="out-in">
