@@ -12,22 +12,23 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Projects',
       component: Home
     },
     {  
     path: '/projects/:projectId',
     component: PortfolioItem,
-    name: 'project_component'
+    name: 'project_component',
+    props: true
     },
     {
       path: '/resume',
-      name: 'resume',
+      name: 'Resume',
       component: Resume
 	  },
     {
       path: '/contact',
-      name: 'contact',
+      name: 'Contact',
       component: Contact
     },
     {

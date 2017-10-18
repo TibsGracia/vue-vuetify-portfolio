@@ -8,7 +8,7 @@
     >
     <v-toolbar flat>
       <v-list>
-        <v-list-tile @click="" :to="{path: '/'}">
+        <v-list-tile>
           <v-list-tile-avatar>
             <img src="./assets/gilbert.png" alt="Gilbert">
           </v-list-tile-avatar>
@@ -19,9 +19,9 @@
       </v-list>
     </v-toolbar>
     <v-divider></v-divider>
-      <v-list>
+      <v-list class="pt-0">
         <v-list-group v-for="item in items" :value="item.active" v-bind:key="item.title">
-          <v-list-tile slot="item" :href="item.href" :to="{name: item.href}">
+          <v-list-tile slot="item" :href="item.href" :to="{name: item.href}" exact>
             <v-list-tile-action>
               <v-icon light>{{ item.icon }}</v-icon>
             </v-list-tile-action>
@@ -40,9 +40,16 @@
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar class="green" light fixed app>
+    <v-toolbar class="light-green darken-1" light fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title></v-toolbar-title>
+      <v-toolbar-title>{{ $route.name }}</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>search</v-icon>
+      </v-btn> 
+      <v-btn icon>
+      <v-icon>refresh</v-icon>
+    </v-btn>
     </v-toolbar>
     <main>
 	    <v-fade-transition mode="out-in">
@@ -70,25 +77,19 @@
         projects,
         drawer: true,
         items: [{
-        	href: 'home',
+        	href: 'Projects',
         	router: true,
         	title: 'Projects',
         	icon: 'work',
         	active: true,
-        	// items: [
-        	//  { title: 'Tumbleweed Express', href: 'projects' },
-        	//  { title: 'Trials By Torchlight' },
-        	//  { title: 'GNOP' },
-        	//  { title: 'Climby' },
-        	// ]
         }, {
-        	href: 'resume',
+        	href: 'Resume',
         	router: true,
         	title: 'Resume',
         	icon: 'assignment',
         	items: [],
         }, {
-        	href: 'contact',
+        	href: 'Contact',
         	router: true,
         	title: 'Contact',
         	icon: 'contact_mail',

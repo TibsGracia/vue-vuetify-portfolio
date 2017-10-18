@@ -1,13 +1,16 @@
 <template>
     <v-container>
-        <!-- <h3 class="my-3">Examples</h3> -->
+    <!--<div class="light-green">
+         <h3 class="my-3">Projects</h3>
+    </div>-->
         <v-card 
+        class="card--flex-toolbar"
         v-for="(project, value) of projects" 
         :project_data="value"
         @click=""
         >
             <v-card-media
-                    height="300px">
+                    height="250px">
                 <v-container fill-height fluid>
                     <v-layout fill-height>
                         <v-flex xs12 align-end flexbox>
@@ -59,5 +62,8 @@
 <style>
 	.card {
 		margin-bottom: 60px;
+	}
+	.text-center {
+  		text-align: center;
 	}
 </style>
