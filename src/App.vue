@@ -20,7 +20,7 @@
     </v-toolbar>
     <v-divider></v-divider>
       <v-list class="pt-0">
-        <v-list-group v-for="item in items" :value="item.active" v-bind:key="item.title">
+        <v-list-group v-for="item in items" :value="item.active" :key="item.title">
           <v-list-tile slot="item" :href="item.href" :to="{name: item.href}" exact>
             <v-list-tile-action>
               <v-icon light>{{ item.icon }}</v-icon>
@@ -63,18 +63,11 @@
 </template>
 
 <script>
-  import projects from './data/projects.json'
-  import portfolioitem from '@/components/PortfolioItem'
-  import axios from 'axios'
 
   export default {
   	name: 'app',
-    components: {
-      portfolioitem
-    },
     data () {
       return {
-        projects,
         drawer: true,
         items: [{
         	href: 'Projects',
@@ -96,18 +89,6 @@
         	items: [],
         }],
     };
-  },
-  methods: {
-    fetchProjects: function () {
-      axios.get('http://localhost:8080/#/data/projects.json').then((response) => {
-        this.projects = response.data
-      }, (error) => {
-        console.log(error)
-      })
-    }
-  },
-  mounted: function () {
-    this.fetchProjects()
   }
 }
 

@@ -1,8 +1,7 @@
 {
 
-  "tumbleweed": {
+  "tumbleweed-express": {
     "title": "Tumbleweed Express",
-    "id": "tumbleweed-express",
     "subtitle": "Give smarter webinars. Get better leads.",
     "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     "cover": "livestorm.jpg",
@@ -18,9 +17,8 @@
     ]
   },
 
-  "trials": {
+  "trials-by-torchlight": {
     "title": "Trials By Torchlight",
-    "id": "trials-by-torchlight",
     "subtitle": "Datavisualisation",
     "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
     "cover": "datafrance.jpg",

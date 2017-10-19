@@ -4,11 +4,12 @@ import pdf from 'vue-pdf'
 import Home from '@/components/Home'
 import Resume from '@/components/Resume'
 import Contact from '@/components/Contact'
-import PortfolioItem from '@/components/PortfolioItem'
+import Project from '@/components/Project'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -17,9 +18,8 @@ export default new Router({
     },
     {  
     path: '/projects/:projectId',
-    component: PortfolioItem,
+    component: Project,
     name: 'project_component',
-    props: true
     },
     {
       path: '/resume',
@@ -34,7 +34,7 @@ export default new Router({
     {
       path: '*',
       redirect: {
-        name: 'home',
+        name: 'Projects',
       },
     },
   ]

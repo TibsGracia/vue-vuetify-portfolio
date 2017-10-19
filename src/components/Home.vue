@@ -1,51 +1,37 @@
 <template>
     <v-container>
-    <!--<div class="light-green">
-         <h3 class="my-3">Projects</h3>
-    </div>-->
-        <v-card 
-        class="card--flex-toolbar"
-        v-for="(project, value) of projects" 
-        :project_data="value"
-        @click=""
-        >
-            <v-card-media
-                    height="250px">
-                <v-container fill-height fluid>
-                    <v-layout fill-height>
-                        <v-flex xs12 align-end flexbox>
-                            <span class="headline black--text">{{ project.title }}</span>
-                        </v-flex>
-                    </v-layout>
-                </v-container>
-            </v-card-media>
-            <v-card-text>
-                {{ project.description | truncate 180 }}
-            </v-card-text>
-            <v-card-actions class="blue-grey darken-1">
-                <v-btn :to="{ name: 'project_component', params: { projectId: project.id } }" flat class="white--text">This is a button</v-btn>
-                <v-spacer></v-spacer>
-                <v-icon class="white--text">explore</v-icon>
-            </v-card-actions>
-        </v-card>
+        <project-list-item v-for="(value, index) of projects" :project_id="index" :project_data="value" :key="index.id"></project-list-item>
     </v-container>
 </template>
 
 <script>
   import projects from '../data/projects.json'
-  import portfolioitem from '@/components/PortfolioItem'
+  import projectListItem from '@/components/ProjectListItem'
 
   export default {
-  	name: 'home',
-  	props: ['project_id', 'project_data'],
-
+    components: {
+      'project-list-item': projectListItem
+    },
     data() {
       return {
       	projects,
       	// imgSrc: require(`images/projects/${this.project_data.cover}`)
       };
     },
-    filters: {
+    /* methods: {
+      fetchProjects: function () {
+        axios.get('http://localhost:8080/data/projects.json').then((response) => {
+          this.projects = response.data
+        }, (error) => {
+          console.log(error)
+        })
+      }
+    },
+    mounted: function () {
+      this.fetchProjects()
+    } */
+  }    
+   /* filters: {
 
       truncate(value, limit) {
       	return _.truncate(value,{
@@ -54,9 +40,8 @@
           separator: /,? +/
       	})
       }	
-    }
+    } */
 	    
-  };
 </script>
 
 <style>
