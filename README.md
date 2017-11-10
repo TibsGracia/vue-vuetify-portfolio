@@ -1,6 +1,6 @@
-# jmanoclay
+# vue-vuetify-portoflio
 
-> Jacob Clayman
+> Portfolio template
 
 ## Build Setup
 
